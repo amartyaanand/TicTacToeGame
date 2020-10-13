@@ -19,18 +19,19 @@ namespace TicTacToeGame
                 board[position] = ' ';
             }
         }
-        public void Choice()
+
+        public char Choice()
         {
-            Console.WriteLine("Enter your choice.(X/0)");
-            string userChoice = Console.ReadLine();
-            char.ToUpper(userChoice[0]);
+            Console.WriteLine("Enter your choice. \nX \n0");
+            char userChoice = Convert.ToChar(Console.ReadLine());
+            char.ToUpper(userChoice);
             string choice;
             switch (userChoice)
             {
-                case "X":
+                case 'X':
                     choice = "You Chose: X";
                     break;
-                case "0":
+                case '0':
                     choice = "You Chose: 0";
                     break;
                 default:
@@ -40,6 +41,7 @@ namespace TicTacToeGame
             Console.WriteLine(choice);
             if (choice == "Invalid Choice")
                 Choice();
+            return userChoice;
         }
         public void ShowBoard()
         {
@@ -48,6 +50,32 @@ namespace TicTacToeGame
             Console.WriteLine(board[4] + "|" + board[5] + "|" + board[6]);
             Console.WriteLine("_______ ");
             Console.WriteLine(board[7] + "|" + board[8] + "|" + board[9]);
+        }
+        public bool PositionCheck(int position)
+        {
+            if (board[position] == ' ')
+                return true;
+            else
+            {
+                Console.WriteLine("Position already occupied");
+                return false;
+            }
+        }
+        public void PlayerMovement(char choice)
+        {
+            Console.WriteLine("Select the position you want to play on");
+            int userChoice = int.Parse(Console.ReadLine());
+            bool emptyPosition = PositionCheck(userChoice);
+            if (emptyPosition == true)
+            {
+                board[userChoice] = choice;
+                ShowBoard();
+            }
+            else
+            {
+                Console.WriteLine("Try Again");
+                PlayerMovement(choice);
+            }
         }
     }
 }
