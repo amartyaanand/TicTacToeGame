@@ -13,16 +13,17 @@ namespace TicTacToeGame
         }
         public void CreateBoard()
         {
-            TicTacToeGame game = new TicTacToeGame();
+         
             for (int position = 1; position < board.Length; position++)
             {
-                game.board[position] = ' ';
+                board[position] = ' ';
             }
         }
         public void Choice()
         {
-            Console.WriteLine("Enter your choice.");
+            Console.WriteLine("Enter your choice.(X/0)");
             string userChoice = Console.ReadLine();
+            char.ToUpper(userChoice[0]);
             string choice;
             switch (userChoice)
             {
@@ -39,6 +40,14 @@ namespace TicTacToeGame
             Console.WriteLine(choice);
             if (choice == "Invalid Choice")
                 Choice();
+        }
+        public void ShowBoard()
+        {
+            Console.WriteLine(board[1] + "|" +board[2]+ "|" +board[3]);
+            Console.WriteLine("_______ ");
+            Console.WriteLine(board[4] + "|" + board[5] + "|" + board[6]);
+            Console.WriteLine("_______ ");
+            Console.WriteLine(board[7] + "|" + board[8] + "|" + board[9]);
         }
     }
 }
