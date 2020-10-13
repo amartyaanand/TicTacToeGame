@@ -11,6 +11,7 @@ namespace TicTacToeGame
             char choice = game.Choice();
             game.ShowBoard();
             game.PlayerMovement(choice);
+            game.Toss();
         }
     }
 }

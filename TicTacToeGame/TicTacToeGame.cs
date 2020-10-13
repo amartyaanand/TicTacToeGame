@@ -7,6 +7,8 @@ namespace TicTacToeGame
     class TicTacToeGame
     {
         public char[] board;
+        public enum Player { USER, COMPUTER };
+        public const int HEAD = 1;
         public TicTacToeGame()
         {
             board = new char[10];
@@ -75,6 +77,21 @@ namespace TicTacToeGame
             {
                 Console.WriteLine("Try Again");
                 PlayerMovement(choice);
+            }
+        }
+        public Player Toss()
+        {
+            Random random = new Random();
+            int toss = random.Next(1, 2);
+            if (toss == HEAD)
+            {
+                Console.WriteLine("User will begin");
+                return Player.USER;
+            }
+            else
+            {
+                Console.WriteLine("Computer will begin");
+                return Player.COMPUTER;
             }
         }
     }
